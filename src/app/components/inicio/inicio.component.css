@@ -1,0 +1,73 @@
+.layout{
+    background-position: top;
+    background-repeat: no-repeat;  
+}
+h3 {
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+    overflow: hidden;
+    text-align: center;            /* Centra el texto horizontalmente */
+    font-size: 2rem;               /* Tamaño de fuente más grande */
+    color: #2c3e50;                /* Color del texto */
+    font-weight: bold;             /* Negrita */
+    letter-spacing: 1.5px;         /* Espaciado entre letras */
+    text-transform: uppercase;     /* Mayúsculas */
+    background-color: #ecf0f1;     /* Fondo suave */
+    padding: 10px 20px;            /* Relleno para hacer que el título se vea mejor */
+    border-radius: 8px;            /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Sombra para darle efecto "flotante" */
+    display: inline-block;         /* Para que el fondo y la sombra se ajusten solo al tamaño del texto */
+  }
+.slideshow-container {
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+    overflow: hidden;
+  }
+  
+  .slideshow-image img {
+    width: 100%;            /* Ajusta la imagen al ancho del contenedor */
+    height: 400px;          /* Fija la altura de la imagen */
+    object-fit: cover;      /* Mantén la proporción de la imagen, recorta si es necesario */
+    display: block;
+  }
+  
+  button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 16px;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+  
+  button.prev {
+    left: 10px;
+  }
+  
+  button.next {
+    right: 10px;
+  }
+  
+  .slideshow-dots {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .dot.active {
+    background-color: #717171;
+  }

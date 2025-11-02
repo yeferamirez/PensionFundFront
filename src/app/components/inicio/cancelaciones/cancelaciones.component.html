@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row" style="width: 100%;">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card text-center" style="padding: 20px;">
+                <h3>Cancelaciones</h3>
+                <br>    
+                <form [formGroup]="unSubscribe" (ngSubmit)="unSubscriber()">
+                    <div class="form-group" style="text-align: start;">
+                        <input type="text" class="form-control" placeholder="Nombre" formControlName="clientName">
+                        <span class="text-danger ml-2" 
+                            *ngIf="unSubscribe.get('clientName').hasError('required') && unSubscribe.get('clientName').touched">
+                            <strong> * </strong>
+                        </span>
+                    </div>
+                    <div class="form-group" style="text-align: start;">
+                        <input type="text" class="form-control" placeholder="Apellidos" formControlName="clientLastName">
+                        <span class="text-danger ml-2" 
+                            *ngIf="unSubscribe.get('clientLastName').hasError('required') && unSubscribe.get('clientLastName').touched">
+                            <strong> * </strong>
+                        </span>
+                    </div>
+                    <div class="form-group" style="text-align: start;">
+                        <input type="text" class="form-control" placeholder="Ciudad" formControlName="productCity">
+                        <span class="text-danger ml-2" 
+                            *ngIf="unSubscribe.get('productCity').hasError('required') && unSubscribe.get('productCity').touched">
+                            <strong> * </strong>
+                        </span>
+                    </div>   
+
+                    <div class="dropdown-container">
+                        <label for="product">Producto:</label>
+                        <select formControlName="dropdown" [(ngModel)]="selectedItemProduct"
+                            (change)="onSelectProduct($event.target.value)">
+                            <option *ngFor="let product of listFundConfigurations" [value]="product.fundName">{{
+                                product.fundName }}
+                            </option>
+                        </select>
+                        <span class="text-danger ml-2"
+                            *ngIf="unSubscribe.get('dropdown').invalid && unSubscribe.get('dropdown').touched">
+                            <strong>
+                                <p class="error">Este campo es requerido.</p>
+                            </strong>
+                        </span>
+                        <label for="type">Tipo de Producto:</label>
+                        <input type="type" [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedItemtype"
+                            readonly />
+                    </div>
+                    <!--
+                        <p *ngIf="selectedItemProduct">Elemento seleccionado: {{ selectedItemProduct }}</p>
+                      -->                  
+                    <div class="form-group">
+                        <button class="btn btn-primary mr-2 btn-aceptar" [disabled]="unSubscribe.invalid" type="submit" >Aceptar</button>
+                        <button class="btn btn-secondary" routerLink="/bienvenidos">Volver</button>
+                    </div>
+                </form>
+            </div>  
+        </div>              
+    </div>
+</div>
+

@@ -1,0 +1,22 @@
+<app-bienvenida></app-bienvenida>
+<div class="layout">
+    <div class="slideshow-container">
+        <div class="slideshow-image">
+
+            <img [src]="images[currentIndex]" alt="Slideshow Image">
+        </div>
+        <!-- Botones de control -->
+        <button class="prev" (click)="prevSlide()">&#10094;</button>
+        <button class="next" (click)="nextSlide()">&#10095;</button>
+    </div>
+    <!-- Indicadores (círculos para cada slide) -->
+    <div class="slideshow-dots">
+        <span *ngFor="let img of images; let i = index" class="dot" [class.active]="i === currentIndex"
+            (click)="currentIndex = i">
+        </span>
+    </div>
+    <div class="slideshow-dots">
+        <h3>Fondo de ahorro BTG</h3>
+    </div>
+    <router-outlet></router-outlet>
+</div>

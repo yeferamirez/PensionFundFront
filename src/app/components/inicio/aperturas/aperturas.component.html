@@ -1,0 +1,102 @@
+<div class="container">
+    <div class="row" style="width: 100%;">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card text-center" style="padding: 20px;">
+                <h3>Aperturas</h3>
+                <br>
+                <form [formGroup]="subscribe" (ngSubmit)="subscriber()">
+                    <div class="form-group" style="text-align: start;">
+                        <input type="text" class="form-control" placeholder="Nombre" formControlName="clientName">
+                        <span class="text-danger ml-2"
+                            *ngIf="subscribe.get('clientName').hasError('required') && subscribe.get('clientName').touched">
+                            <strong> * </strong>
+                        </span>
+                    </div>
+                    <div class="form-group" style="text-align: start;">
+                        <input type="text" class="form-control" placeholder="Apellidos"
+                            formControlName="clientLastName">
+                        <span class="text-danger ml-2"
+                            *ngIf="subscribe.get('clientLastName').hasError('required') && subscribe.get('clientLastName').touched">
+                            <strong> * </strong>
+                        </span>
+                    </div>
+                    <div class="form-group" style="text-align: start;">
+                        <input type="text" class="form-control" placeholder="Ciudad" formControlName="productCity">
+                        <span class="text-danger ml-2"
+                            *ngIf="subscribe.get('productCity').hasError('required') && subscribe.get('productCity').touched">
+                            <strong> * </strong>
+                        </span>
+                    </div>
+                    <div class="form-group" style="text-align: start;">
+                        <input type="text" class="form-control" placeholder="Email" formControlName="email">
+                        <span class="text-danger ml-2"
+                            *ngIf="subscribe.get('email').hasError('required') && subscribe.get('email').touched">
+                            <strong> * </strong>
+                        </span>
+                    </div>
+                    <div class="form-group" style="text-align: start;">
+                        <input type="text" class="form-control" placeholder="Telefono" formControlName="phoneNumber">
+                        <span class="text-danger ml-2"
+                            *ngIf="subscribe.get('phoneNumber').hasError('required') && subscribe.get('phoneNumber').touched">
+                            <strong> * </strong>
+                        </span>
+                    </div>
+                    <div class="dropdown-container">
+                        <label for="product">Producto:</label>
+                        <select formControlName="dropdown" [(ngModel)]="selectedItemProduct"
+                            (change)="onSelectProduct($event.target.value)">
+                            <option *ngFor="let product of listFundConfigurations" [value]="product.fundName">{{
+                                product.fundName }}
+                            </option>
+                        </select>
+                        <span class="text-danger ml-2"
+                            *ngIf="subscribe.get('dropdown').invalid && subscribe.get('dropdown').touched">
+                            <strong>
+                                <p class="error">Este campo es requerido.</p>
+                            </strong>
+                        </span>
+                        <label for="type">Tipo de Producto:</label>
+                        <input type="type" [ngModelOptions]="{standalone: true}" [(ngModel)]="selectedItemtype"
+                            readonly />
+                    </div>
+                    <span *ngIf="isSpanVisible">Monto minimo requerido: {{ selectedValue }}</span>
+                    <div class="form-group" style="text-align: start;">
+                        <input type="text" class="form-control" placeholder="Monto" formControlName="value">
+                        <span class="text-danger ml-2"
+                            *ngIf="subscribe.get('value').hasError('required') && subscribe.get('value').touched">
+                            <strong> * </strong>
+                        </span>                        
+                    </div>
+                    <div>
+                        <label>Tipo de Notificación:</label>
+                        <label>
+                            <input type="radio" formControlName="radioOption" [(ngModel)]="selectedNotificationType"
+                                name="notificationType" value="Sms" required> Sms
+                        </label>
+                        <label>
+                            <input type="radio" formControlName="radioOption" [(ngModel)]="selectedNotificationType"
+                                name="notificationType" value="Email" required>
+                            Email
+                        </label>
+
+                        <span class="text-danger ml-2"
+                            *ngIf="subscribe.get('radioOption').invalid && subscribe.get('radioOption').touched">
+                            <strong>
+                                <p class="error">Este campo es requerido.</p>
+                            </strong>
+                        </span>
+                    </div>
+                    <!--
+                        <p>Género seleccionado: {{ selectedNotificationType }}</p>
+                        <p *ngIf="selectedItemProduct">Elemento seleccionado: {{ selectedItemProduct }}</p>
+                      -->
+                    <div class="form-group">
+                        <button class="btn btn-primary mr-2 btn-aceptar" [disabled]="subscribe.invalid"
+                            type="submit">Aceptar</button>
+                        <button class="btn btn-secondary" routerLink="/inicio/bienvenidos">Volver</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

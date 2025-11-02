@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  justify-content: center;
+  /* Alinear el contenedor a la derecha */
+  width: 100%;
+}
+
+h3 {
+  font-family: 'Rowdies', cursive;
+}
+
+.card {
+  width: auto;
+  /* O puedes especificar un porcentaje si deseas un tamaño específico */
+  margin: 20px;
+  /* Espaciado alrededor de la tarjeta */
+}
+
+.table-container {
+  width: 100%;
+  /* La tabla ocupa el 100% del contenedor de la tarjeta */
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  justify-content: flex-end;
+  /* Alinear la fila a la derecha */
+  width: auto;
+  /* Permitir que la fila se ajuste al contenido */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}

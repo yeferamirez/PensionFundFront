@@ -1,0 +1,38 @@
+<div class="container" *ngIf="listTransactions.length > 0">
+    <div class="row">
+        <div class="card text-center" style="padding: 100px;">
+            <h3 class="card-title">Transacciones</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Producto</th>
+                            <th>Tipo</th>
+                            <th>Ciudad</th>
+                            <th>Monto</th>
+                            <th>Estado</th>
+                            <th>Fecha de Registro</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of listTransactions">
+                            <td>{{ item.clientName }}</td>
+                            <td>{{ item.productName }}</td>
+                            <td>{{ item.productType }}</td>
+                            <td>{{ item.productCity }}</td>
+                            <td>{{ item.value }}</td>
+                            <td>{{ item.state }}</td>
+                            <td>{{ item.modificationDate }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br>
+            <div class="form-group">
+                <button class="btn btn-secondary" routerLink="/bienvenidos">Volver</button>
+            </div>
+        </div>
+
+    </div>
+</div>
