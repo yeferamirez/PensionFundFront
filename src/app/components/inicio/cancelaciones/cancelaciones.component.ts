@@ -37,8 +37,7 @@ export class CancelacionesComponent implements OnInit {
 
   getFundConfigurations():void{    
     this.subscribeService.getFundConfigurations().subscribe(data => {
-      this.listFundConfigurations = data.fundConfigurations;
-      console.log(data.status);  
+      this.listFundConfigurations = data;
       console.log(this.listFundConfigurations);    
     },
     (error) => {
@@ -47,9 +46,9 @@ export class CancelacionesComponent implements OnInit {
   }
   onSelectProduct(item: string): void {
     this.selectedItemProduct = item;
-    const selectedProduct = this.listFundConfigurations.find(x=>x.fundName == this.selectedItemProduct);
+    const selectedProduct = this.listFundConfigurations.find(x=>x.name == this.selectedItemProduct);
     if (selectedProduct) {
-      this.selectedItemtype = selectedProduct.category;
+      this.selectedItemtype = selectedProduct.type;
     }
     console.log('Elemento seleccionado:', this.selectedItemProduct);
   }
@@ -64,10 +63,10 @@ export class CancelacionesComponent implements OnInit {
       productType: this.selectedItemtype
     }
     this.unSubscribeService.unSubscribeFund(unSubscribeFund).subscribe(data=> {
-      this.toastr.success('El cliente '+ data.transaction.clientName +' fue subscrito con exito!!!', data.status);      
+      this.toastr.success('El cliente '+ data.clientName +' fue desuscrito con exito!!!', data.status);      
       this.router.navigate(['/bienvenidos']); 
     }, error => {      
-      this.toastr.error(error.error.message , error.error.status); 
+      this.toastr.error(error.error.detail , error.error.status); 
       this.unSubscribe.reset();   
     });    
   }  

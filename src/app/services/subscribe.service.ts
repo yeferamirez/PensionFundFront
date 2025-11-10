@@ -14,7 +14,7 @@ export class SubscribeService {
   
   constructor(private http: HttpClient) {
     this.myAppUrl = environment.endpoint;
-    this.myApiUrl = 'api/v1/PensionFund/'
+    this.myApiUrl = '/api/v1/PensionFund/'
    }
 
   subscribeFund(subscribe: Subscribe): Observable<any> {

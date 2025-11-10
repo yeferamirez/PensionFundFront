@@ -31,8 +31,8 @@
                         <label for="product">Producto:</label>
                         <select formControlName="dropdown" [(ngModel)]="selectedItemProduct"
                             (change)="onSelectProduct($event.target.value)">
-                            <option *ngFor="let product of listFundConfigurations" [value]="product.fundName">{{
-                                product.fundName }}
+                            <option *ngFor="let product of listFundConfigurations" [value]="product.name">{{
+                                product.name }}
                             </option>
                         </select>
                         <span class="text-danger ml-2"

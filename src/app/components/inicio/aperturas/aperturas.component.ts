@@ -41,8 +41,7 @@ export class AperturasComponent implements OnInit {
 
   getFundConfigurations():void{    
     this.subscribeService.getFundConfigurations().subscribe(data => {
-      this.listFundConfigurations = data.fundConfigurations;
-      console.log(data.status);  
+      this.listFundConfigurations = data;
       console.log(this.listFundConfigurations);    
     },
     (error) => {
@@ -52,10 +51,10 @@ export class AperturasComponent implements OnInit {
 
   onSelectProduct(item: string): void {
     this.selectedItemProduct = item;
-    const selectedProduct = this.listFundConfigurations.find(x=>x.fundName == this.selectedItemProduct);
+    const selectedProduct = this.listFundConfigurations.find(x=>x.name == this.selectedItemProduct);
     if (selectedProduct) {
-      this.selectedItemtype = selectedProduct.category;
-      this.selectedValue = selectedProduct.minimumCost;
+      this.selectedItemtype = selectedProduct.type;
+      this.selectedValue = selectedProduct.minimumCost ?? 0;
       this.isSpanVisible = !!this.selectedValue;
     }
   }
@@ -75,10 +74,10 @@ export class AperturasComponent implements OnInit {
     
     console.log(subscribeFund);
     this.subscribeService.subscribeFund(subscribeFund).subscribe(data=> {
-      this.toastr.success('El cliente '+ data.transaction.clientName +' fue subscrito con exito!!!', data.status);      
+      this.toastr.success('El cliente '+ data.clientName +' fue subscrito con exito!!!', data.status);      
       this.router.navigate(['/inicio/bienvenidos']); 
     }, error => {      
-      this.toastr.error(error.error.message , error.error.status); 
+      this.toastr.error(error.error.detail , error.error.status);
       this.subscribe.reset();   
     });    
   }  
